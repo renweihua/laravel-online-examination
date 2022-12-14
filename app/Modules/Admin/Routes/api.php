@@ -162,55 +162,6 @@ Route::prefix(cnpscy_config('admin_prefix'))
                     Route::get('/', 'Log\AdminLoginLogController@index');
                     Route::delete('/delete', 'Log\AdminLoginLogController@delete');
                 });
-
-                // 文章分类
-                Route::prefix('article_categories')->group(function() {
-                    Route::get('/', 'Article\ArticleCategoryController@index');
-                    Route::post('/create', 'Article\ArticleCategoryController@create');
-                    Route::put('/update', 'Article\ArticleCategoryController@update');
-                    Route::delete('/delete', 'Article\ArticleCategoryController@delete');
-                    Route::get('/getSelectLists', 'Article\ArticleCategoryController@getSelectLists')->withoutMiddleware([CheckRabc::class]);
-                    Route::put('/changeFiledStatus', 'Article\ArticleCategoryController@changeFiledStatus');
-                });
-
-                // 文章标签
-                Route::prefix('article_labels')->group(function() {
-                    Route::get('/', 'Article\ArticleLabelController@index');
-                    Route::post('/create', 'Article\ArticleLabelController@create');
-                    Route::put('/update', 'Article\ArticleLabelController@update');
-                    Route::delete('/delete', 'Article\ArticleLabelController@delete');
-                    Route::get('/getSelectLists', 'Article\ArticleLabelController@getSelectLists')->withoutMiddleware([CheckRabc::class]);
-                });
-
-                // 文章管理
-                Route::prefix('articles')->group(function() {
-                    Route::get('/', 'Article\ArticleController@index');
-                    Route::get('/detail', 'Article\ArticleController@detail');
-                    Route::post('/create', 'Article\ArticleController@create');
-                    Route::put('/update', 'Article\ArticleController@update');
-                    Route::delete('/delete', 'Article\ArticleController@delete');
-                    Route::put('/changeFiledStatus', 'Article\ArticleController@changeFiledStatus');
-                });
-
-                // Bbs菜单栏目管理
-                Route::prefix('menus')->group(function() {
-                    Route::get('/', 'Bbs\MenuController@index');
-                    Route::post('/create', 'Bbs\MenuController@create');
-                    Route::put('/update', 'Bbs\MenuController@update');
-                    Route::delete('/delete', 'Bbs\MenuController@delete');
-                    Route::get('/getSelectLists', 'Bbs\MenuController@getSelectLists')->withoutMiddleware([CheckRabc::class]);
-                    Route::put('/changeFiledStatus', 'Bbs\MenuController@changeFiledStatus');
-                    Route::get('/getTplTypeAndViews', 'Bbs\MenuController@getTplTypeAndViews')->withoutMiddleware([CheckRabc::class]);
-                });
-
-                // 问道管理
-                include_once module_path('Asktao') . '/Routes/admin.php';
-                // 社区管理
-                include_once module_path('Bbs') . '/Routes/admin.php';
-                // 视频管理
-                include_once module_path('VideoManage') . '/Routes/admin.php';
-                // 消费统计管理
-                include_once module_path('ConsumptionStatistics') . '/Routes/admin.php';
             });
         });
     });
