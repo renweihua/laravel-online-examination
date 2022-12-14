@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/teacher', function (Request $request) {
-    return $request->user();
+Route::prefix('teacher')
+    ->group(function(){
+    Route::post('/auth/login',  'AuthController@login');
 });

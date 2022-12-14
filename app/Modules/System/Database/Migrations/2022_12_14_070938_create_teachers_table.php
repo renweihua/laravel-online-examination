@@ -18,6 +18,7 @@ class CreateTeachersTable extends Migration
         Schema::create($table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('teacher_id')->unsigned()->comment('Id');
+            $table->string('teacher_no', 20)->default('')->comment('教工号');
             $table->string('teacher_mobile', 20)->default('')->comment('手机号');
             $table->string('teacher_email', 100)->default('')->comment('邮箱');
             $table->string('teacher_name', 200)->default('')->comment('姓名');
@@ -28,6 +29,7 @@ class CreateTeachersTable extends Migration
             $table->integer('last_login_time')->unsigned()->default(0)->comment('上一次登录时间');
             $table->boolean('is_delete')->unsigned()->default(0)->comment('是否删除：0.否；1.是');
             $table->index(['is_delete']);
+            $table->unique(['teacher_no']);
             $table->index(['teacher_mobile']);
             $table->index(['teacher_email']);
             $table->index(['teacher_name']);
