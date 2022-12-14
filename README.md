@@ -15,6 +15,12 @@ Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN�
 2.  xxxx
 3.  xxxx
 
+#### 数据库
+- [X] 老师表 `teachers`
+- [X] 课程表 `courses`
+- [X] 题库表 `question_banks`
+- [ ] 学生表 `students`
+
 #### 使用说明
 
 1.  xxxx
