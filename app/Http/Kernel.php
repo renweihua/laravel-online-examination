@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\ConvertEmptyStringsToNull;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -20,7 +21,11 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
-        \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        // 空字符串自动转换为null的中间件
+        // \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+
+        // 自定义的：空字符串自动转换为null的中间件
+        ConvertEmptyStringsToNull::class,
     ];
 
     /**
@@ -41,7 +46,9 @@ class Kernel extends HttpKernel
 
         'api' => [
             // \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            'throttle:api',
+            // 1分钟300次接口请求限制
+            // 'throttle:300,1',
+	    // 'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
