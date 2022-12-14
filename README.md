@@ -1,4 +1,4 @@
-# laravel-online-exam
+# laravel-online-examination
 
 #### 介绍
 {**以下是 Gitee 平台说明，您可以替换此简介**
@@ -19,7 +19,11 @@ Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN�
 - [X] 老师表 `teachers`
 - [X] 课程表 `courses`
 - [X] 题库表 `question_banks`
+- [X] 试卷表 `papers`
+- [ ] 试卷题库表 `paper_questions`
 - [ ] 学生表 `students`
+- [ ] 学生试卷答题表 `student_paper_answers`
+- [ ] 学生试卷得分表 `student_paper_scores`
 
 #### 使用说明
 
