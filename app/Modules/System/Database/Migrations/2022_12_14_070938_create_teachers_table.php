@@ -17,7 +17,7 @@ class CreateTeachersTable extends Migration
         if (Schema::hasTable($table)) return;
         Schema::create($table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned()->comment('Id');
+            $table->increments('teacher_id')->unsigned()->comment('Id');
             $table->string('teacher_mobile', 20)->default('')->comment('手机号');
             $table->string('teacher_email', 100)->default('')->comment('邮箱');
             $table->string('teacher_name', 200)->default('')->comment('姓名');

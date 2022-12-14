@@ -17,7 +17,7 @@ class CreateQuestionBanksTable extends Migration
         if (Schema::hasTable($table)) return;
         Schema::create($table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned()->comment('Id');
+            $table->increments('question_id')->unsigned()->comment('Id');
             $table->integer('course_id')->unsigned()->default(0)->comment('课程Id');
             $table->integer('teacher_id')->unsigned()->default(0)->comment('教师Id');
             $table->boolean('question_type')->unsigned()->default(0)->comment('题库类型：0.单选；1.多选；2.填空；3.判断；4.简单题');

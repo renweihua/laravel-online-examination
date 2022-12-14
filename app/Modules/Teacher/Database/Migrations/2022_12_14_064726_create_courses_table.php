@@ -17,7 +17,7 @@ class CreateCoursesTable extends Migration
         if (Schema::hasTable($table)) return;
         Schema::create($table, function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('id')->unsigned()->comment('Id');
+            $table->increments('course_id')->unsigned()->comment('Id');
             $table->integer('teacher_id')->unsigned()->default(0)->comment('教师Id');
             $table->string('course_name', 200)->default('')->comment('课程名称');
             $table->string('course_description', 200)->default('')->comment('课程简介/描述');
