@@ -20,5 +20,9 @@ Route::prefix('teacher')
     Route::middleware([])->group(function(){
         // Vue格式的课程列表
         Route::get('vue-courses',  'TeacherController@getFormatCoursesByVue');
+        // 题库管理
+        Route::prefix('question_bank')->group(function(){
+            Route::post('create',  'QuestionBankController@create');
+        });
     });
 });

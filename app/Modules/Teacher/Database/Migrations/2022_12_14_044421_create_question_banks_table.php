@@ -22,6 +22,7 @@ class CreateQuestionBanksTable extends Migration
             $table->integer('teacher_id')->unsigned()->default(0)->comment('教师Id');
             $table->boolean('question_type')->unsigned()->default(0)->comment('题库类型：0.单选；1.多选；2.填空；3.判断；4.简单题');
             $table->string('question_content', 200)->default('')->comment('问题内容');
+            $table->string('question_images', 200)->default('')->comment('图片');
             $table->string('question_options', 200)->default('')->comment('选项列表');
             $table->string('question_answer', 200)->default('')->comment('问题答案');
             $table->string('answer_explain', 200)->default('')->comment('题目解析');
