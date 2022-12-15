@@ -17,6 +17,12 @@ class QuestionBank extends Model
 
     public function getQuestionOptionsAttribute($value)
     {
+        if (empty($value)) return [];
         return my_json_decode($value);
+    }
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class,'course_id','course_id');
     }
 }

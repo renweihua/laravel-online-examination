@@ -23,7 +23,7 @@ class LoginRequest extends BaseRequest
     public function messages()
     {
         return [
-            'teacher_no.required' => '教工号必填项！',
+            'teacher_no.required' => '教工号为必填项！',
             'password.required'   => '登录密码为必填项！',
         ];
     }

@@ -22,6 +22,7 @@ Route::prefix('teacher')
         Route::get('vue-courses',  'TeacherController@getFormatCoursesByVue');
         // 题库管理
         Route::prefix('question_bank')->group(function(){
+            Route::get('',  'QuestionBankController@index');
             Route::post('create',  'QuestionBankController@create');
         });
     });
