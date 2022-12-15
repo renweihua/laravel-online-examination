@@ -16,4 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('teacher')
     ->group(function(){
     Route::post('/auth/login',  'AuthController@login');
+
+    Route::middleware([])->group(function(){
+        // Vue格式的课程列表
+        Route::get('vue-courses',  'TeacherController@getFormatCoursesByVue');
+    });
 });
