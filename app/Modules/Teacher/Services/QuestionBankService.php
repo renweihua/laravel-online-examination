@@ -14,17 +14,22 @@ class QuestionBankService extends Service
     {
         $login_user_id = getLoginUserId();
         $request = request();
+        $search = $request->input('search', '');
         // 题库类型
         $question_type = $request->input('question_type', -1);
-        $search = $request->input('search', '');
+        // 课程筛选
+        $course_id = $request->input('course_id', -1);
         $lists = QuestionBank::with('course')
             ->where('teacher_id', $login_user_id)
-            ->where(function ($query) use ($question_type, $search){
+            ->where(function ($query) use ($search, $question_type, $course_id){
                 if (!empty($search)){
                     $query->where('question_content', 'LIKE', '%' . trim($search) . '%');
                 }
                 if ($question_type > -1){
                     $query->where('question_type', '=', $question_type);
+                }
+                if ($course_id > -1){
+                    $query->where('course_id', '=', $course_id);
                 }
             })
             ->orderByDesc('question_id')
@@ -36,10 +41,10 @@ class QuestionBankService extends Service
     protected function getQuestionById($question_id, $check_auth = true)
     {
         $question_bank = QuestionBank::find($question_id);
-        if (empty($note)){
+        if (empty($question_bank)){
             throw new BadRequestException('题库不存在或已删除！');
         }
-        if ($check_auth && $note->user_id != getLoginUserId()){
+        if ($check_auth && $question_bank->teacher_id != getLoginUserId()){
             throw new ForbiddenException('您无权限查看题库`' . $question_bank->question_content . '`！');
         }
         return $question_bank;
@@ -63,7 +68,7 @@ class QuestionBankService extends Service
         $question_bank->answer_explain = $request->input('answer_explain', '');
         $question_bank->save();
 
-        $this->setError('题库保存成功！');
+        $this->setError('题库`' . $question_bank->question_content . '`保存成功！');
         return $question_bank;
     }
 }

@@ -20,7 +20,7 @@ class QuestionBankController extends TeacherController
         return $this->successJson($lists);
     }
 
-    public function create(QuestionBankRequest $request)
+    public function createOrUpdate(QuestionBankRequest $request)
     {
         $data = $this->service->createOrUpdate($request);
 

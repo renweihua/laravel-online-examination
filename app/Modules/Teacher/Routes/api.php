@@ -23,7 +23,8 @@ Route::prefix('teacher')
         // 题库管理
         Route::prefix('question_bank')->group(function(){
             Route::get('',  'QuestionBankController@index');
-            Route::post('create',  'QuestionBankController@create');
+            Route::post('create',  'QuestionBankController@createOrUpdate');
+            Route::put('update',  'QuestionBankController@createOrUpdate');
         });
     });
 });
