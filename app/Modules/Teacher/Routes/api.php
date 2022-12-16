@@ -25,6 +25,7 @@ Route::prefix('teacher')
             Route::get('',  'QuestionBankController@index');
             Route::post('create',  'QuestionBankController@createOrUpdate');
             Route::put('update',  'QuestionBankController@createOrUpdate');
+            Route::delete('delete',  'QuestionBankController@delete');
         });
     });
 });

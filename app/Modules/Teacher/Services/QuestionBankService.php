@@ -71,4 +71,14 @@ class QuestionBankService extends Service
         $this->setError('题库`' . $question_bank->question_content . '`保存成功！');
         return $question_bank;
     }
+
+    public function delete($question_id)
+    {
+        $question_bank = $this->getQuestionById($question_id);
+
+        $question_bank->delete();
+
+        $this->setError('题库`' . $question_bank->question_content . '`删除成功！');
+        return $question_bank;
+    }
 }
