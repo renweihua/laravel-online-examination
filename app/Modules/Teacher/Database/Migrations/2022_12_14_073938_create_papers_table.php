@@ -24,7 +24,7 @@ class CreatePapersTable extends Migration
             $table->integer('paper_duration')->unsigned()->default(0)->comment('考试时长(秒)：0.不限时');
             $table->boolean('paper_difficulty')->unsigned()->default(0)->comment('考试难度');
             $table->string('paper_attention', 200)->default('')->comment('考试注意事项');
-            $table->boolean('paper_type')->unsigned()->default(0)->comment('考试难度');
+            $table->boolean('paper_mechanism')->unsigned()->default(0)->comment('组卷机制：0.随机；1.固定');
             $table->string('paper_config', 500)->default('')->comment('考试题目对应分数的配置');
             $table->integer('student_count')->unsigned()->default(0)->comment('已参加学生数量');
             $table->integer('created_time')->unsigned()->default(0)->comment('创建时间');

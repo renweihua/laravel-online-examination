@@ -6,5 +6,5 @@ use App\Models\Model;
 
 class PaperQuestion extends Model
 {
-    
+
 }
